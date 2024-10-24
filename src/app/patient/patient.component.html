@@ -1,0 +1,230 @@
+<form class="m-5 p-5" [formGroup]="PatientForm">
+    <h4 >Personal Details</h4>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label for="Fname">FirstName</label>
+        <input type="text" class="form-control" id="Fname" placeholder="FirstName" formControlName = "firstName">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="Lname">LastName</label>
+        <input type="text" class="form-control" id="Lname" placeholder="LastName" formControlName = "lastName">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="Gender">Gender</label>
+        <select class="form-select" id="Gender" formControlName="gender">
+            <option selected>Open this select menu</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select>
+      </div>
+    </div>
+    <div class="row mt-2">
+        <div class="form-group col-md-4">
+          <label for="dob">Date of birth</label>
+          <input type="Date" class="form-control" id="dob" formControlName = "dob" >
+        </div>
+        <div class="form-group col-md-4">
+            <label for="MartialStatus">Marital Status</label>
+            <select class="form-select" id="MartialStatus" formControlName = "maritalStatus">
+                <option selected>Open this select menu</option>
+                <option value="Married">Married</option>
+                <option value="UnMarried">UnMarried</option>
+                
+              </select>
+          </div>
+        <div class="form-group col-md-4">
+          <label for="BloodGroup">Blood Group</label>
+          <select class="form-select" id="BloodGroup" formControlName = "bloodGroup">
+              <option selected>Open this select menu</option>
+              <option value="A+">A+</option>
+              <option value="B+">B+</option>
+              <option value="O+">O+</option>
+            </select>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="form-group col-md-6">
+            <label for="Phone">Phone Number</label>
+            <input type="text" class="form-control" id="Phone" placeholder="Phone Number" formControlName = "phoneNumber">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" placeholder="Email" formControlName="email">
+        </div>
+      </div>
+    <div class="form-group mt-2">
+      <label for="inputAddress">Address Line 1</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName = "addressLine1">
+    </div>
+    <div class="form-group mt-2">
+      <label for="inputAddress2">Address Line 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" formControlName="addressLine2">
+    </div>
+    <div class="row mt-2">
+      <div class="form-group col-md-4">
+        <label for="inputCountry">Country</label>
+        <select id="inputCountry" class="form-select" (click)="showCountries()" (change)="showStates($event)" formControlName="country">
+            @if(countries)
+            {
+              <option value="" disabled> Select Country</option>
+              @for(item of countries;track $index)
+              {
+               <option [value]="item.id">{{item.name}}</option>
+              } 
+             
+            }
+          </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-select" formControlName="state">
+            @if(states)
+            {
+              <option value="" disabled> Select State</option>
+             @for(item of states;track $index)
+             {
+              <option [value]="item.id">{{item.name}}</option>
+             } 
+            }
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputCity">City</label>
+        <select id="inputCity" class="form-select" formControlName="city">
+          <option selected>Choose...</option>
+          <option value="city1">city1</option>
+          <option value="city2">city2</option>
+        </select>
+      </div>
+    </div>
+
+    <h4 class="mt-5">Medical Information</h4>
+
+    <div class="row mt-3">
+        <div class="form-group col-md-6">
+            <label for="Pmh">Past Medical History</label>
+            <select id="Pmh" class="form-select" formControlName = "pastMedicalHistory">
+                <option selected>Choose...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Illness">Current illness</label>
+            <input type="text" class="form-control" id="Illness" formControlName="currentIllness" >
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="form-group col-md-6">
+            <label for="TreatedBy">Treated By</label>
+            <input type="text" class="form-control" id="TreatedBy" formControlName = "treatedBy">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Ts">Treatment Status</label>
+            <select id="Ts" class="form-select" formControlName="treatmentStatus">
+                <option value="Not Started">Not Started</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Completed">Completed</option>
+              </select>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="form-group col-md-4">
+          <label for="insuranceName">Insurance Name</label>
+          <input type="text" class="form-control" id="insuranceName" formControlName = "insuranceName">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="insuranceId">Insurance Id</label>
+          <input type="text" class="form-control" id="insuranceId" formControlName = "insuranceId">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="coverage">Coverage</label>
+          <select id="coverage" class="form-select" formControlName="coverage">
+            <option value="Partial">Partial</option>
+            <option value="Full">Full</option>
+          </select>
+        </div>
+    </div>
+    
+    <h4 class="mt-5">Emergency Contact</h4>
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label for="ContactName">Name</label>
+            <input type="text" class="form-control" id="ContactName" formControlName = "emergencyContactName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="ContactNo">Phone Number</label>
+            <input type="text" class="form-control" id="ContactNo" formControlName="emergencyContactNumber">
+        </div>
+    </div>
+    <br>
+    <button type="submit" [disabled]="PatientForm.invalid"  [style.display] = "AddBtn" (click)="formSubmit()" class="btn btn-primary">Add Patient</button>
+    <button class="btn btn-secondary " [disabled]="PatientForm.invalid" [style.display] = "SaveBtn" (click)="UpdatePatient()">Save Changes</button>
+
+  </form>
+
+  <div class="m-5 p-5">
+    @if(patients )
+    {
+        @if(patients.length > 0)
+        {
+            <h1>Patients</h1>
+            <table >
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Operations</th>
+                </tr>
+                
+                @for (item of patients ; track item )
+                {
+                    
+                    @if(item.isActive == true)
+                    {
+                        <tr style="border: 1px solid black">
+                            
+                           <td>
+                            <div class="d-flex gap-1">
+                                <span class="fs-8 text-dark ">{{item.firstName}}</span>
+                                <span class="fs-8 text-dark ">{{item.lastName}}</span>
+                            </div>
+                           </td>
+                            
+                            <td>
+                                <span class="fs-8 text-dark ">{{item.gender}}</span>
+                            </td>
+                                
+                            <td>
+                                <span class="fs-8 text-dark ">{{item.phoneNumber}}</span>
+                            </td>
+                            
+                            <td>
+                                <span class="fs-8 text-dark ">{{item.email}}</span>
+                            </td>
+                                
+                                          
+                            <td>
+                                <div class="d-flex gap-2 ">
+                                    <button class=" btn btn-danger fs-8 "  (click)="RemovePatient(item.id)">Remove patient</button> 
+                                    <button class=" btn btn-primary" (click)="onUpdate(item)">Update</button>  
+                                    <button class=" btn btn-secondary" >View</button>  
+                                 </div >
+                            
+                            </td>
+
+                        </tr>
+                    }
+
+                }
+            </table>  
+        }
+        @else
+        {
+            <p>No contacts found ...</p>
+        }
+    }
+  </div>

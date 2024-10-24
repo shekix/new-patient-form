@@ -1,0 +1,52 @@
+<div class=" d-flex align-items-center justify-content-center ">
+    <div class="p-5 p-md-4 p-xl-5 ">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-5">
+            <h2 class="h3">Registration</h2>
+            <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details to register</h3>
+          </div>
+        </div>
+      </div>
+      <form [formGroup]="RegistrationForm">
+        <div class="row gy-3 gy-md-4 overflow-hidden ">
+          <div class="col-6">
+            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+            <input type="email" class="form-control"  id="firstName" placeholder="First Name" formControlName="firstName" required>
+          </div>
+          <div class="col-6">
+            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input type="email" class="form-control"  id="lastName" placeholder="Last Name" formControlName="lastName" required>
+          </div>
+          <div class="col-12">
+            <label for="username" class="form-label">Username<span class="text-danger">*</span></label>
+            <input type="email" class="form-control"  id="username" placeholder="username" formControlName="userName" required>
+          </div>
+          <div class="col-12">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control"  id="password" formControlName="password" required>
+          </div>
+          <div class="col-12">
+            <label for="cpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control"  id="cpassword" formControlName="cpassword" required>
+          </div>
+          
+        
+           
+          
+          <div class="col-12">
+            <div class="d-grid">
+              <button class="btn bsb-btn-xl btn-primary" [disabled]="RegistrationForm.invalid" (click)="onSubmit()">Sign up</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-12">
+          <hr class="mt-5 mb-4 border-secondary-subtle">
+          <p class="m-0 text-secondary text-end">Already have an account? <a routerLink="/app-login" routerLinkActive="active" class="link-primary text-decoration-none">Login</a></p>
+        </div>
+      </div>
+</div>
+</div>
+<router-outlet></router-outlet>
